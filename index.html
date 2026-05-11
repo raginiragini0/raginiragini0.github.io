@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ragini | Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    :root{
+      --bg:#f8fafc;
+      --surface:#ffffff;
+      --surface-alt:#f1f1f1;
+      --text:#111111;
+      --muted:#404040;
+      --subtle:#666666;
+      --primary:#111111;
+      --primary-soft:#3a3a3a;
+      --border:rgba(17,17,17,0.1);
+      --shadow:0 10px 30px rgba(17,17,17,0.12);
+      --nav-bg:rgba(248,250,252,0.95);
+      --hero-bg:linear-gradient(to right, #ffffff, #eeeeee);
+      --logo-bg:#f8fafc;
+      --highlight:#ffffff;
+    }
+
+    body.dark-mode{
+      --bg:#080808;
+      --surface:#151515;
+      --surface-alt:#0f0f0f;
+      --text:#ffffff;
+      --muted:#d4d4d4;
+      --subtle:#a3a3a3;
+      --primary:#ffffff;
+      --primary-soft:#d8d8d8;
+      --border:rgba(255,255,255,0.14);
+      --shadow:0 10px 30px rgba(0,0,0,0.3);
+      --nav-bg:rgba(8,8,8,0.95);
+      --hero-bg:linear-gradient(to right, #080808, #181818);
+      --logo-bg:#ffffff;
+      --highlight:#000000;
+    }
+
+    body{
+      font-family:'Poppins', sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+      transition:background 0.3s ease, color 0.3s ease;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .container{
+      width:90%;
+      max-width:1200px;
+      margin:auto;
+    }
+
+    /* NAVBAR */
+
+    nav{
+      width:100%;
+      position:fixed;
+      top:0;
+      left:0;
+      background:var(--nav-bg);
+      backdrop-filter:blur(10px);
+      z-index:1000;
+      border-bottom:1px solid var(--border);
+      transition:background 0.3s ease, border-color 0.3s ease;
+    }
+
+    .nav-content{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:18px 0;
+    }
+
+    .logo-button{
+      width:44px;
+      height:44px;
+      font-size:1.2rem;
+      font-weight:700;
+      color:var(--primary);
+      border:1px solid var(--border);
+      background:var(--surface);
+      border-radius:8px;
+      line-height:1;
+      transition:0.3s;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .logo-button:hover{
+      transform:translateY(-2px);
+      border-color:var(--text);
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:18px;
+    }
+
+    .nav-links a{
+      color:var(--muted);
+      transition:0.3s;
+      font-weight:500;
+      font-size:0.95rem;
+    }
+
+    .nav-links a:hover{
+      color:var(--primary);
+    }
+
+    .theme-toggle{
+      border:1px solid var(--border);
+      background:var(--surface);
+      color:var(--text);
+      width:44px;
+      height:44px;
+      border-radius:50%;
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      font-size:1.1rem;
+      line-height:1;
+      transition:0.3s;
+    }
+
+    .theme-toggle:hover{
+      border-color:var(--primary);
+      color:var(--primary);
+      transform:translateY(-2px);
+    }
+
+    /* HERO */
+
+    .hero{
+      min-height:72vh;
+      display:flex;
+      align-items:center;
+      padding-top:110px;
+      background:var(--hero-bg);
+    }
+
+    .hero-text{
+      max-width:860px;
+    }
+
+    .hero-text h3{
+      color:var(--primary);
+      font-size:1.2rem;
+      margin-bottom:10px;
+    }
+
+    .hero-text h1{
+      font-size:4rem;
+      line-height:1.1;
+      margin-bottom:20px;
+    }
+
+    .hero-text p{
+      color:var(--muted);
+      margin-bottom:30px;
+      font-size:1.1rem;
+      max-width:760px;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      align-items:center;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 28px;
+      background:var(--primary);
+      color:var(--highlight);
+      border-radius:10px;
+      font-weight:600;
+      transition:0.3s;
+      border:1px solid var(--primary);
+    }
+
+    .btn:hover{
+      transform:translateY(-3px);
+      background:var(--primary-soft);
+    }
+
+    .btn.secondary{
+      background:transparent;
+      color:var(--text);
+    }
+
+    .btn.secondary:hover{
+      background:var(--surface);
+    }
+
+    .hero-card{
+      background:var(--surface);
+      padding:40px;
+      border-radius:8px;
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+    }
+
+    .hero-card h2{
+      margin-bottom:20px;
+      color:var(--primary);
+    }
+
+    .hero-card ul{
+      list-style:none;
+    }
+
+    .hero-card li{
+      margin-bottom:12px;
+      color:var(--muted);
+    }
+
+    .hero-card strong{
+      color:var(--text);
+    }
+
+    /* SECTION */
+
+    section{
+      padding:100px 0;
+      scroll-margin-top:110px;
+    }
+
+    .section-title{
+      font-size:2.5rem;
+      margin-bottom:50px;
+      text-align:center;
+      color:var(--primary);
+    }
+
+    /* ABOUT */
+
+    .about{
+      background:var(--surface-alt);
+    }
+
+    .about p{
+      max-width:900px;
+      margin:auto;
+      text-align:center;
+      color:var(--muted);
+      font-size:1.05rem;
+    }
+
+    .about-layout{
+      display:grid;
+      grid-template-columns:1fr 320px;
+      gap:32px;
+      align-items:stretch;
+    }
+
+    .about-photo{
+      width:100%;
+      height:100%;
+      min-height:480px;
+      object-fit:cover;
+      object-position:center;
+      border-radius:8px;
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      display:block;
+    }
+
+    .about-copy{
+      display:grid;
+      gap:24px;
+    }
+
+    .about-copy p{
+      margin:0;
+      text-align:left;
+    }
+
+    strong{
+      color:var(--text);
+    }
+
+    /* PROJECTS */
+
+    .project-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+      gap:22px;
+    }
+
+    .project-card{
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:8px;
+      padding:28px;
+      box-shadow:var(--shadow);
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+    }
+
+    .project-card h3{
+      color:var(--text);
+    }
+
+    .project-card p{
+      color:var(--muted);
+    }
+
+    .project-meta{
+      color:var(--subtle);
+      font-size:0.95rem;
+      font-weight:600;
+    }
+
+    .project-card ul{
+      color:var(--muted);
+      padding-left:20px;
+    }
+
+    .project-card li{
+      margin-bottom:10px;
+    }
+
+    .project-link{
+      color:var(--primary);
+      font-weight:700;
+      margin-top:auto;
+    }
+
+    /* EXPERIENCE */
+
+    .timeline{
+      display:flex;
+      flex-direction:column;
+      gap:30px;
+    }
+
+    .timeline-item{
+      background:var(--surface);
+      padding:30px;
+      border-radius:8px;
+      border-left:5px solid var(--text);
+      box-shadow:var(--shadow);
+    }
+
+    .timeline-header{
+      display:grid;
+      grid-template-columns:76px 1fr;
+      gap:20px;
+      align-items:center;
+      margin-bottom:18px;
+    }
+
+    .company-logo{
+      width:76px;
+      height:76px;
+      border-radius:8px;
+      background:var(--logo-bg);
+      border:1px solid var(--border);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px;
+      overflow:hidden;
+      color:var(--primary);
+      font-weight:700;
+      text-align:center;
+      line-height:1.1;
+    }
+
+    .company-logo img{
+      max-width:100%;
+      max-height:100%;
+      object-fit:contain;
+      display:block;
+      filter:grayscale(1);
+    }
+
+    .tru-logo{
+      background:#111111;
+    }
+
+    .role-title{
+      color:var(--text);
+      margin-bottom:4px;
+      font-size:1.2rem;
+    }
+
+    .company-name{
+      color:var(--primary);
+      margin-bottom:8px;
+      font-weight:700;
+    }
+
+    .timeline-item span{
+      color:var(--subtle);
+      font-size:0.95rem;
+    }
+
+    .timeline-item p{
+      margin-top:15px;
+      color:var(--muted);
+    }
+
+    .timeline-item ul{
+      color:var(--muted);
+      margin-top:15px;
+      padding-left:20px;
+    }
+
+    .timeline-item li{
+      margin-bottom:10px;
+    }
+
+    .skills-line{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:16px;
+    }
+
+    .pill{
+      border:1px solid var(--border);
+      background:var(--surface-alt);
+      color:var(--muted);
+      padding:6px 10px;
+      border-radius:8px;
+      font-size:0.85rem;
+      font-weight:500;
+    }
+
+    .geotab-trail{
+      position:relative;
+      display:grid;
+      gap:24px;
+      margin-top:22px;
+      padding-left:30px;
+    }
+
+    .geotab-trail::before{
+      content:"";
+      position:absolute;
+      top:14px;
+      bottom:14px;
+      left:8px;
+      width:3px;
+      border-radius:999px;
+      background:var(--text);
+    }
+
+    .trail-role{
+      position:relative;
+      background:var(--surface-alt);
+      border:1px solid var(--border);
+      border-radius:8px;
+      padding:22px;
+    }
+
+    .trail-role::before{
+      content:"";
+      position:absolute;
+      top:24px;
+      left:-30px;
+      width:17px;
+      height:17px;
+      border-radius:50%;
+      background:var(--text);
+      border:4px solid var(--surface);
+      box-shadow:0 0 0 1px var(--border);
+    }
+
+    .trail-role.current{
+      background:var(--surface);
+      box-shadow:var(--shadow);
+    }
+
+    .trail-role h4{
+      color:var(--text);
+      font-size:1.1rem;
+      margin-bottom:4px;
+    }
+
+    .trail-role span{
+      display:block;
+      margin-bottom:12px;
+    }
+
+    .geotab-moments{
+      margin:34px auto 0;
+      max-width:920px;
+    }
+
+    .photo-grid{
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0, 1fr));
+      gap:12px;
+      align-items:stretch;
+    }
+
+    .photo-card{
+      aspect-ratio:1 / 1;
+      overflow:hidden;
+      border-radius:8px;
+      border:1px solid var(--border);
+      background:var(--surface);
+    }
+
+    .photo-card:first-child{
+      min-height:0;
+    }
+
+    .photo-card img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    /* EDUCATION */
+
+    .education-card{
+      background:var(--surface);
+      padding:40px;
+      border-radius:8px;
+      text-align:left;
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+    }
+
+    .education-layout{
+      display:grid;
+      grid-template-columns:360px 1fr;
+      gap:28px;
+      align-items:center;
+    }
+
+    .education-photo{
+      width:100%;
+      height:230px;
+      object-fit:cover;
+      object-position:center 18%;
+      border-radius:8px;
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      display:block;
+    }
+
+    /* CERTIFICATIONS & VOLUNTEERING */
+
+    .two-column{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+    }
+
+    .info-card{
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:8px;
+      padding:28px;
+      box-shadow:var(--shadow);
+    }
+
+    .info-card h3{
+      color:var(--primary);
+      margin-bottom:14px;
+    }
+
+    .info-card p,
+    .info-card li{
+      color:var(--muted);
+    }
+
+    .info-card ul{
+      padding-left:20px;
+    }
+
+    /* CONTACT */
+
+    .contact{
+      background:var(--surface-alt);
+      text-align:center;
+    }
+
+    .contact p{
+      margin-bottom:15px;
+      color:var(--muted);
+    }
+
+    .contact-links{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:16px;
+      margin:22px 0;
+    }
+
+    .social-icon-link{
+      width:48px;
+      height:48px;
+      border:1px solid var(--border);
+      border-radius:8px;
+      background:var(--surface);
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      transition:0.3s;
+    }
+
+    .social-icon-link:hover{
+      transform:translateY(-3px);
+      border-color:var(--text);
+    }
+
+    .social-icon-link img{
+      width:26px;
+      height:26px;
+      display:block;
+      filter:grayscale(1);
+    }
+
+    body.dark-mode .social-icon-link img{
+      filter:grayscale(1) invert(1);
+    }
+
+    .scroll-top{
+      position:fixed;
+      right:24px;
+      bottom:24px;
+      width:46px;
+      height:46px;
+      border:1px solid var(--border);
+      border-radius:8px;
+      background:var(--text);
+      color:var(--highlight);
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      font-size:1.35rem;
+      font-weight:700;
+      line-height:1;
+      box-shadow:var(--shadow);
+      opacity:0;
+      pointer-events:none;
+      transform:translateY(10px);
+      transition:0.3s;
+      z-index:999;
+    }
+
+    .scroll-top.visible{
+      opacity:1;
+      pointer-events:auto;
+      transform:translateY(0);
+    }
+
+    .scroll-top:hover{
+      transform:translateY(-3px);
+      background:var(--primary-soft);
+    }
+
+    footer{
+      text-align:center;
+      padding:25px;
+      color:var(--subtle);
+      border-top:1px solid var(--border);
+    }
+
+    @media(max-width:1100px){
+
+      .nav-content{
+        flex-direction:column;
+        gap:12px;
+      }
+
+      .nav-links{
+        width:100%;
+      }
+
+      .hero{
+        padding-top:180px;
+      }
+
+      section{
+        scroll-margin-top:170px;
+      }
+
+      .hero-text h1{
+        font-size:3rem;
+      }
+
+      .nav-links{
+        gap:15px;
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+
+      .nav-links a{
+        font-size:0.88rem;
+      }
+    }
+
+    @media(max-width:780px){
+      .container{
+        width:92%;
+      }
+
+      nav{
+        position:sticky;
+      }
+
+      .nav-content{
+        padding:14px 0;
+      }
+
+      .nav-links{
+        gap:10px;
+      }
+
+      .hero{
+        min-height:auto;
+        padding:70px 0;
+      }
+
+      section{
+        padding:72px 0;
+        scroll-margin-top:24px;
+      }
+
+      .hero-text h1{
+        font-size:2.5rem;
+      }
+
+      .section-title{
+        font-size:2rem;
+      }
+
+      .timeline-header,
+      .two-column,
+      .photo-grid,
+      .about-layout,
+      .education-layout{
+        grid-template-columns:1fr;
+      }
+
+      .about-photo{
+        order:-1;
+      }
+
+      .about-photo,
+      .education-photo{
+        width:100%;
+        height:320px;
+        min-height:0;
+      }
+
+      .education-photo{
+        height:260px;
+      }
+
+      .photo-card{
+        aspect-ratio:5 / 4;
+      }
+
+      .hero-actions{
+        align-items:stretch;
+        flex-direction:column;
+      }
+
+      .btn{
+        text-align:center;
+      }
+
+      .theme-toggle{
+        width:40px;
+        height:40px;
+      }
+
+      .scroll-top{
+        right:16px;
+        bottom:16px;
+      }
+    }
+
+    @media(max-width:480px){
+      .hero-text h1{
+        font-size:2.1rem;
+      }
+
+      .hero-card,
+      .timeline-item,
+      .info-card,
+      .education-card{
+        padding:22px;
+      }
+
+      .nav-links a{
+        font-size:0.8rem;
+      }
+    }
+
+  </style>
+</head>
+
+<body id="top">
+
+  <!-- NAVBAR -->
+
+  <nav>
+    <div class="container nav-content">
+      <a class="logo-button" href="#top" aria-label="Home" title="Home">⌂</a>
+
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#volunteering">Volunteering</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+        <button class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch theme">
+          ☾
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+    <div class="container">
+
+      <div class="hero-text">
+        <h3>Hello, I'm Ragini</h3>
+        <h1>Technical Account Manager</h1>
+
+        <p>
+          Partner-facing technical specialist focused on APIs, data investigations,
+          platform troubleshooting, and clear support experiences.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#experience" class="btn">View Experience</a>
+          <a href="#projects" class="btn secondary">View Projects</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+
+  <section class="about" id="about">
+    <div class="container">
+      <h2 class="section-title">About</h2>
+
+      <div class="about-layout">
+        <div class="about-copy">
+          <p>
+            I am a <strong>Technical Account Manager at Geotab</strong> with a computing science
+            background and hands-on experience across <strong>technical support, partner enablement,
+            APIs, integrations, data analysis, automation, and platform troubleshooting</strong>.
+            My work sits where customer needs, product behavior, and engineering details meet:
+            I investigate complex issues, translate technical findings into clear next steps, and
+            help partners build, implement, and scale with confidence.
+          </p>
+
+          <p>
+            I bring expertise in <strong>root cause analysis, SQL and BigQuery investigations,
+            Salesforce and Jira workflows, SDK and API support, documentation, technical deep dives,
+            and automation scripting</strong>. Across my experience, I have worked on partner support,
+            case operations, internal tools, website development, UI/UX, WordPress, PHP/MySQL, and
+            programming education, giving me a broad view of both <strong>product-facing technical work</strong>
+            and <strong>user-centered delivery</strong>.
+          </p>
+
+          <div class="hero-card">
+            <h2>Quick Highlights</h2>
+
+            <ul>
+              <li><strong>Current role:</strong> Technical Account Manager at Geotab</li>
+              <li><strong>Recent technical focus:</strong> API integrations, SDK support, SQL/BigQuery analysis, automation, Salesforce, Jira, documentation, and partner-facing technical strategy</li>
+            </ul>
+          </div>
+        </div>
+
+        <img class="about-photo" src="assets/profile-picture-updated.png" alt="Ragini portrait">
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+
+  <section id="experience">
+    <div class="container">
+
+      <h2 class="section-title">Experience</h2>
+
+      <div class="timeline">
+
+        <div class="timeline-item geotab-career">
+          <div class="timeline-header">
+            <div class="company-logo">
+              <img src="https://www.geotab.com/CMS-Media-production/Misc/logos/geotab-logo%28full-colour-rgb%29.svg" alt="Geotab logo">
+            </div>
+            <div>
+              <h3 class="role-title">Geotab Inc.</h3>
+              <span>Burnaby, BC | April 2022 – Present</span>
+            </div>
+          </div>
+
+          <div class="geotab-trail">
+            <div class="trail-role current">
+              <h4>Technical Account Manager</h4>
+              <span>April 2025 – Present</span>
+              <p>
+                Primary technical resource for six partners, providing advanced troubleshooting,
+                root cause analysis, implementation guidance, and strategic technical support across
+                Geotab products, services, third-party integrations, APIs, and Order Now solutions.
+              </p>
+              <ul>
+                <li>Diagnose API integrations, system performance issues, security configurations, and platform optimization needs.</li>
+                <li>Guide partner development teams through API documentation, compatibility questions, and advanced feature implementation.</li>
+                <li>Lead technical deep dives, critical issue reviews, knowledge-sharing sessions, and quarterly business review discussions.</li>
+                <li>Create technical documentation, FAQs, troubleshooting guides, automation scripts, and response playbooks to improve support at scale.</li>
+              </ul>
+              <div class="skills-line" aria-label="Technical Account Manager skills">
+                <span class="pill">Technical Account Management</span>
+                <span class="pill">API Integrations</span>
+                <span class="pill">Root Cause Analysis</span>
+                <span class="pill">SQL</span>
+                <span class="pill">BigQuery</span>
+                <span class="pill">Salesforce</span>
+                <span class="pill">Jira</span>
+                <span class="pill">Technical Documentation</span>
+              </div>
+            </div>
+
+            <div class="trail-role">
+              <h4>Senior Partner Support Technical Specialist</h4>
+              <span>Burnaby, BC | November 2024 – April 2025</span>
+              <p>
+                Mentored technical specialists, supported escalated and sensitive partner cases,
+                reviewed high-volume case trends, and shared best practices from complex resolutions
+                with the wider team.
+              </p>
+              <ul>
+                <li>Conducted shadowing sessions with agents during onboarding and helped maintain support quality.</li>
+                <li>Served as an SME in Collision Reconstruction, Software Development Kit (SDK), and Intelligent Transportation Systems (ITS).</li>
+                <li>Supported service level agreements through case allocation and overflow support when needed.</li>
+              </ul>
+              <div class="skills-line" aria-label="Senior Partner Support Technical Specialist skills">
+                <span class="pill">Mentorship</span>
+                <span class="pill">Escalation Management</span>
+                <span class="pill">SDK</span>
+                <span class="pill">ITS</span>
+                <span class="pill">Collision Reconstruction</span>
+                <span class="pill">Case Trend Analysis</span>
+                <span class="pill">Partner Support</span>
+              </div>
+            </div>
+
+            <div class="trail-role">
+              <h4>Partner Support Technical Specialist</h4>
+              <span>Burnaby, BC | April 2022 – November 2024</span>
+              <p>
+                Managed partner cases in Salesforce, collaborated with Engineering Support through Jira,
+                queried BigQuery data with SQL, and resolved technical hardware, software, installation,
+                portal configuration, and product implementation issues.
+              </p>
+              <ul>
+                <li>Delivered product and service training to resellers and customers.</li>
+                <li>Helped develop an internal Assignment App with Google Apps Script, JavaScript, HTML, PHP, and CSS to assign Salesforce cases based on descriptions and agent expertise.</li>
+                <li>Preserved confidentiality and security while supporting customer data and partner issues.</li>
+              </ul>
+              <div class="skills-line" aria-label="Partner Support Technical Specialist skills">
+                <span class="pill">Salesforce</span>
+                <span class="pill">Jira</span>
+                <span class="pill">Google BigQuery</span>
+                <span class="pill">Google Apps Script</span>
+                <span class="pill">JavaScript</span>
+                <span class="pill">Python</span>
+                <span class="pill">Technical Training</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="geotab-moments">
+            <div class="photo-grid">
+              <div class="photo-card">
+                <img src="assets/geotab-team-gathering.jpg" alt="Geotab team gathering">
+              </div>
+
+              <div class="photo-card">
+                <img src="assets/geotab-office.jpg" alt="Geotab office">
+              </div>
+
+              <div class="photo-card">
+                <img src="assets/geotab-workspace.jpg" alt="Geotab workspace">
+              </div>
+
+              <div class="photo-card">
+                <img src="assets/geotab-gathering.JPG" alt="Geotab team moment">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div class="company-logo">
+              <img src="https://jillscafe.com/wp-content/uploads/2020/08/cropped-Final-Logo-Transparent-270x270.png" alt="Jill's Catering and Mobile Kitchen logo">
+            </div>
+            <div>
+              <h3 class="role-title">Senior Web Developer Intern</h3>
+              <div class="company-name">Jill's Catering and Mobile Kitchen</div>
+              <span>Kamloops, BC | June 2020 – April 2021</span>
+            </div>
+          </div>
+
+          <p>
+            Built and deployed two websites, integrated Mailchimp and social media plugins,
+            optimized SEO through Google Webmaster tools, generated SSL certificates, and developed
+            custom back-end functionality using HTML5, CSS, JavaScript, PHP, and MySQL.
+          </p>
+          <div class="skills-line" aria-label="Senior Web Developer Intern skills">
+            <span class="pill">HTML5</span>
+            <span class="pill">CSS</span>
+            <span class="pill">JavaScript</span>
+            <span class="pill">PHP</span>
+            <span class="pill">MySQL</span>
+            <span class="pill">SEO</span>
+            <span class="pill">Mailchimp</span>
+            <span class="pill">SSL</span>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div class="company-logo tru-logo">
+              <img src="https://www.tru.ca/__shared/assets/TRU-LOGO-LEFT-REVERSED56576.png" alt="Thompson Rivers University logo">
+            </div>
+            <div>
+              <h3 class="role-title">Undergraduate Teaching Assistant</h3>
+              <div class="company-name">Thompson Rivers University</div>
+              <span>Kamloops, BC | September 2019 – April 2020 / November 2021 – December 2021</span>
+            </div>
+          </div>
+
+          <p>
+            Supported Python, C#, and Java courses by explaining programming concepts,
+            grading assignments with clear feedback, and providing one-on-one help desk tutoring.
+          </p>
+          <div class="skills-line" aria-label="Undergraduate Teaching Assistant skills">
+            <span class="pill">Python</span>
+            <span class="pill">C#</span>
+            <span class="pill">Java</span>
+            <span class="pill">Tutoring</span>
+            <span class="pill">Assignment Grading</span>
+            <span class="pill">Technical Communication</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+
+  <section class="about" id="projects">
+    <div class="container">
+      <h2 class="section-title">Projects</h2>
+
+      <div class="project-grid">
+        <div class="project-card">
+          <h3>Jill's Catering and Mobile Kitchen Website</h3>
+          <div class="project-meta">June 2020 - April 2021</div>
+          <ul>
+            <li>Created a WordPress website to showcase Jill's Catering and Mobile Kitchen services.</li>
+            <li>Helped keep the business visible during COVID-19 by clearly communicating service updates and preventive measures.</li>
+            <li>Integrated WordPress plugins for social media feeds and Mailchimp newsletter subscriptions.</li>
+            <li>Built PHP back-end functionality so admins could update front-end content, including daily specials.</li>
+            <li>Modified the Square/Weebly e-commerce website and improved security by adding an SSL certificate.</li>
+            <li>Managed nameservers, data files, and databases through Site5 and cPanel.</li>
+            <li>Indexed the website with Google Webmaster Tools and improved SEO visibility.</li>
+          </ul>
+          <a class="project-link" href="https://jillscafe.com" target="_blank" rel="noopener">Visit Website</a>
+        </div>
+
+        <div class="project-card">
+          <h3>Kamloops Wolves Minor Hockey Website</h3>
+          <div class="project-meta">June 2020 - April 2021</div>
+          <ul>
+            <li>Created a WordPress website for the Kamloops Wolves Hockey Program.</li>
+            <li>Built a back-end system for admins to enroll players into matches, assign skaters and goalies, and split players into teams.</li>
+            <li>Designed admin workflows for player records, wallet and transaction details, skate information, and paid/unpaid transaction tracking.</li>
+            <li>Enabled website users to register for skates by entering credentials and selecting the required information.</li>
+            <li>Added report generation so admins could send customer invoices and store records in the database.</li>
+          </ul>
+          <a class="project-link" href="http://kamloopswolves.com" target="_blank" rel="noopener">Visit Website</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+
+  <section class="about" id="certifications">
+    <div class="container">
+      <h2 class="section-title">Certifications</h2>
+
+      <div class="two-column">
+        <div class="info-card">
+          <h3>Master Microsoft PowerShell</h3>
+          <p>Automation-focused training that supports scripting, troubleshooting, and repeatable technical workflows.</p>
+        </div>
+
+        <div class="info-card">
+          <h3>Foundations of User Experience (UX) Design</h3>
+          <p>UX foundations that support accessible, intuitive, and user-centered product and web experiences.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VOLUNTEERING -->
+
+  <section id="volunteering">
+    <div class="container">
+      <h2 class="section-title">Volunteering</h2>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div class="company-logo">
+              <img src="https://www.mapscanada.org/wp-content/uploads/2021/07/MAPS-Canada-Logo_Horizontal_Primary_5.4.21-300x119.png" alt="MAPS Canada logo">
+            </div>
+            <div>
+              <h3 class="role-title">Tech Committee Volunteer</h3>
+              <div class="company-name">MAPS Canada</div>
+              <span>Vancouver, BC | February 2022 – April 2023</span>
+            </div>
+          </div>
+
+          <p>
+            Helped resolve technology issues communicated through Slack and supported WordPress
+            website and storefront maintenance.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div class="company-logo">UGo<br>Local</div>
+            <div>
+              <h3 class="role-title">Front-End UI/UX Web Developer</h3>
+              <div class="company-name">UGo Local Corporation</div>
+              <span>Kamloops, BC | January 2021 – April 2021</span>
+            </div>
+          </div>
+
+          <p>
+            Completed a university capstone project focused on website migration, WordPress
+            maintenance, custom HTML/PHP development, Mailchimp support, AWS-to-Bluehost migration,
+            and chatbot implementation.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+
+  <section id="education">
+    <div class="container">
+
+      <h2 class="section-title">Education</h2>
+
+      <div class="education-layout">
+        <img class="education-photo" src="assets/graduation.png" alt="Ragini at graduation">
+
+        <div class="education-card">
+          <h3>Bachelor of Computing Science</h3>
+
+          <p>Thompson Rivers University</p>
+          <p>Kamloops, British Columbia</p>
+          <p>2017 – 2021</p>
+
+          <br>
+
+          <h4>GPA: 3.89 / 4.33</h4>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+
+  <section class="contact" id="contact">
+    <div class="container">
+
+      <h2 class="section-title">Contact</h2>
+
+      <p><strong>Email:</strong> <a class="project-link" href="mailto:eyeamragini@yahoo.co.uk">eyeamragini@yahoo.co.uk</a></p>
+      <p><strong>Location:</strong> Kamloops, BC</p>
+      <div class="contact-links">
+        <a class="social-icon-link" href="https://www.linkedin.com/in/raginiragini/" target="_blank" rel="noopener" aria-label="Open Ragini's LinkedIn profile">
+          <img src="assets/linkedin-icon.svg" alt="LinkedIn">
+        </a>
+      </div>
+
+      <br>
+
+      <a href="mailto:eyeamragini@yahoo.co.uk" class="btn">
+        Send Email
+      </a>
+
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Ragini's Portfolio. All Rights Reserved.
+  </footer>
+
+  <a class="scroll-top" href="#top" aria-label="Scroll to top" title="Scroll to top">↑</a>
+
+  <script>
+    const themeToggle = document.querySelector('.theme-toggle');
+    const scrollTop = document.querySelector('.scroll-top');
+    const savedTheme = localStorage.getItem('theme') || 'light';
+
+    function setTheme(theme){
+      const isDark = theme === 'dark';
+      document.body.classList.toggle('dark-mode', isDark);
+      themeToggle.textContent = isDark ? '☀' : '☾';
+      themeToggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+      localStorage.setItem('theme', theme);
+    }
+
+    setTheme(savedTheme);
+
+    themeToggle.addEventListener('click', () => {
+      const nextTheme = document.body.classList.contains('dark-mode') ? 'light' : 'dark';
+      setTheme(nextTheme);
+    });
+
+    function updateScrollTop(){
+      scrollTop.classList.toggle('visible', window.scrollY > 500);
+    }
+
+    updateScrollTop();
+    window.addEventListener('scroll', updateScrollTop, { passive:true });
+  </script>
+
+</body>
+</html>
