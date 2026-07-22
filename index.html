@@ -161,6 +161,14 @@
       background:var(--hero-bg);
     }
 
+    .hero-layout{
+      display:grid;
+      grid-template-columns:minmax(0, 1fr) 360px;
+      gap:64px;
+      align-items:center;
+      padding:54px 0;
+    }
+
     .hero-text{
       max-width:860px;
     }
@@ -242,6 +250,21 @@
       color:var(--text);
     }
 
+    .hero-photo-wrap{
+      position:relative;
+    }
+
+    .hero-photo{
+      width:100%;
+      aspect-ratio:4 / 5;
+      object-fit:cover;
+      object-position:center;
+      display:block;
+      border-radius:8px;
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+    }
+
     /* SECTION */
 
     section{
@@ -271,22 +294,8 @@
     }
 
     .about-layout{
-      display:grid;
-      grid-template-columns:1fr 320px;
-      gap:32px;
-      align-items:stretch;
-    }
-
-    .about-photo{
-      width:100%;
-      height:100%;
-      min-height:480px;
-      object-fit:cover;
-      object-position:center;
-      border-radius:8px;
-      border:1px solid var(--border);
-      box-shadow:var(--shadow);
-      display:block;
+      max-width:900px;
+      margin:auto;
     }
 
     .about-copy{
@@ -704,6 +713,10 @@
         padding-top:180px;
       }
 
+      .hero-layout{
+        gap:36px;
+      }
+
       section{
         scroll-margin-top:170px;
       }
@@ -761,20 +774,23 @@
       .timeline-header,
       .two-column,
       .photo-grid,
-      .about-layout,
+      .hero-layout,
       .education-layout{
         grid-template-columns:1fr;
       }
 
-      .about-photo{
+      .hero-photo-wrap{
         order:-1;
       }
 
-      .about-photo,
+      .hero-photo{
+        width:min(100%, 360px);
+        margin:auto;
+      }
+
       .education-photo{
         width:100%;
         height:320px;
-        min-height:0;
       }
 
       .education-photo{
@@ -822,6 +838,187 @@
       }
     }
 
+    /* Editorial portfolio refresh */
+    :root{
+      --bg:#fffdf9;
+      --surface:#ffffff;
+      --surface-alt:#f3faf8;
+      --text:#18312f;
+      --muted:#4c625f;
+      --subtle:#6f817e;
+      --primary:#087e8b;
+      --primary-soft:#056a75;
+      --border:#d7e6e2;
+      --shadow:0 14px 34px rgba(21,71,67,0.09);
+      --nav-bg:rgba(255,253,249,0.94);
+      --hero-bg:radial-gradient(circle at 88% 22%, #d8f1ed 0, transparent 23rem), #f3faf8;
+      --logo-bg:#ffffff;
+      --highlight:#ffffff;
+    }
+
+    body.dark-mode{
+      --bg:#102423;
+      --surface:#17312f;
+      --surface-alt:#122a28;
+      --text:#edf8f5;
+      --muted:#c1d4cf;
+      --subtle:#9db5af;
+      --primary:#67d2c7;
+      --primary-soft:#8ee2d8;
+      --border:#31514d;
+      --shadow:0 14px 34px rgba(0,0,0,0.24);
+      --nav-bg:rgba(16,36,35,0.94);
+      --hero-bg:radial-gradient(circle at 88% 22%, #1b514d 0, transparent 23rem), #122a28;
+      --logo-bg:#17312f;
+      --highlight:#102423;
+    }
+
+    .container{width:min(calc(100% - 2.5rem), 1120px);}
+
+    nav{border-bottom:1px solid var(--border);}
+
+    .nav-content{min-height:72px;padding:0;}
+
+    .logo-button{
+      width:auto;
+      height:auto;
+      padding:0;
+      background:transparent;
+      border:0;
+      border-radius:0;
+      font-size:1.05rem;
+      letter-spacing:-0.03em;
+    }
+
+    .nav-links{gap:1.1rem;}
+
+    .nav-links a{font-size:0.88rem;}
+
+    .theme-toggle{width:38px;height:38px;border-radius:50%;}
+
+    .hero{min-height:0;padding:0;}
+
+    .hero-layout{
+      grid-template-columns:minmax(0,1fr) minmax(220px,340px);
+      gap:clamp(2rem,7vw,6rem);
+      padding:clamp(4.5rem,10vw,8rem) 0 4.5rem;
+    }
+
+    .hero-text h3{
+      color:var(--primary-soft);
+      font-size:.76rem;
+      letter-spacing:.13em;
+      text-transform:uppercase;
+      font-weight:750;
+      margin-bottom:.85rem;
+    }
+
+    .hero-text h1{
+      max-width:760px;
+      font-size:clamp(2.35rem,5.4vw,4.55rem);
+      letter-spacing:-.065em;
+      line-height:1.02;
+      margin:0;
+    }
+
+    .hero-text p{
+      max-width:680px;
+      margin:1.5rem 0 0;
+      font-size:clamp(1.05rem,2.1vw,1.3rem);
+      color:var(--muted);
+    }
+
+    .hero-actions{gap:.8rem;margin-top:2rem;}
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:.72rem 1.1rem;
+      border-radius:999px;
+      font-size:.94rem;
+      border-color:var(--primary-soft);
+    }
+
+    .btn.secondary{background:var(--surface);color:var(--primary-soft);}
+
+    .hero-photo-wrap{max-width:340px;justify-self:end;}
+
+    .hero-photo-wrap::before{
+      content:"";
+      position:absolute;
+      inset:1.1rem -1.1rem -1.1rem 1.1rem;
+      border-radius:18px;
+      background:var(--primary);
+      opacity:.18;
+    }
+
+    .hero-photo{position:relative;z-index:1;border-radius:18px;border-color:var(--border);box-shadow:0 18px 42px rgba(12,75,70,.16);}
+
+    section{padding:5rem 0;}
+
+    .section-title{
+      margin:0 0 1.75rem;
+      font-size:clamp(2.2rem,4.6vw,3.45rem);
+      letter-spacing:-.06em;
+      line-height:1.05;
+      text-align:left;
+    }
+
+    .section-title::after{content:"";display:block;width:64px;height:2px;margin-top:1rem;background:var(--primary);}
+
+    .about p{max-width:710px;margin:0;color:var(--muted);text-align:left;}
+
+    .about-copy{gap:1.3rem;}
+
+    .hero-card{max-width:710px;padding:1.35rem;border-radius:14px;box-shadow:0 10px 24px rgba(21,71,67,.06);}
+
+    .hero-card h2{font-size:1.2rem;margin-bottom:.8rem;}
+
+    .expertise{background:#153c39;color:#ffffff;}
+
+    body.dark-mode .expertise{background:#0a1918;color:#edf8f5;}
+
+    .timeline{gap:0;margin-top:0;border-top:1px solid var(--border);}
+
+    .timeline-item{
+      padding:1.7rem 0;
+      border:0;
+      border-bottom:1px solid var(--border);
+      border-left:0;
+      border-radius:0;
+      box-shadow:none;
+      background:transparent;
+    }
+
+    .timeline-header{grid-template-columns:76px 1fr;}
+
+    .trail-role{border-radius:14px;}
+
+    .project-card,.info-card,.education-card{border-radius:14px;box-shadow:0 10px 24px rgba(21,71,67,.06);}
+
+    .contact{background:var(--surface-alt);}
+
+    .contact .section-title{text-align:center;}
+
+    .contact .section-title::after{margin:1rem auto 0;}
+
+    @media(max-width:1100px){
+      .nav-content{flex-direction:row;padding:14px 0;}
+      .hero{padding-top:0;}
+    }
+
+    @media(max-width:780px){
+      .nav-content{flex-direction:column;gap:10px;}
+      .hero-layout{padding:4rem 0;gap:2.5rem;}
+      .hero-photo-wrap{order:initial;justify-self:center;}
+      .hero-photo-wrap::before{inset:.8rem -.8rem -.8rem .8rem;}
+      .hero-actions{align-items:center;flex-direction:row;}
+      section{padding:3.8rem 0;}
+      .section-title{margin-bottom:1.5rem;}
+      .nav-links{justify-content:center;}
+    }
+
   </style>
 </head>
 
@@ -831,7 +1028,7 @@
 
   <nav>
     <div class="container nav-content">
-      <a class="logo-button" href="#top" aria-label="Home" title="Home">⌂</a>
+      <a class="logo-button" href="#top" aria-label="Home" title="Home">Ragini</a>
 
       <div class="nav-links">
         <a href="#about">About</a>
@@ -852,22 +1049,27 @@
 
   <section class="hero">
     <div class="container">
+      <div class="hero-layout">
+        <div class="hero-text">
+          <h3>Hello, I'm Ragini</h3>
+          <h1>Technical Account Manager for SaaS &amp; Enterprise Solutions</h1>
 
-      <div class="hero-text">
-        <h3>Hello, I'm Ragini</h3>
-        <h1>Technical Account Manager</h1>
+          <p>
+            I help enterprise partners solve complex technical problems, from API integrations and
+            data investigations to platform optimization and scalable support. I bring together
+            technical depth, clear communication, and a customer-first approach to move work forward.
+          </p>
 
-        <p>
-          Partner-facing technical specialist focused on APIs, data investigations,
-          platform troubleshooting, and clear support experiences.
-        </p>
+          <div class="hero-actions">
+            <a href="assets/Ragini%20-%20Resume.pdf" class="btn" download>Download Resume</a>
+            <a href="#about" class="btn secondary">About Me</a>
+          </div>
+        </div>
 
-        <div class="hero-actions">
-          <a href="#experience" class="btn">View Experience</a>
-          <a href="#projects" class="btn secondary">View Projects</a>
+        <div class="hero-photo-wrap">
+          <img class="hero-photo" src="assets/profile-picture-updated.png" alt="Portrait of Ragini">
         </div>
       </div>
-
     </div>
   </section>
 
@@ -880,21 +1082,19 @@
       <div class="about-layout">
         <div class="about-copy">
           <p>
-            I am a <strong>Technical Account Manager at Geotab</strong> with a computing science
-            background and hands-on experience across <strong>technical support, partner enablement,
-            APIs, integrations, data analysis, automation, and platform troubleshooting</strong>.
-            My work sits where customer needs, product behavior, and engineering details meet:
-            I investigate complex issues, translate technical findings into clear next steps, and
-            help partners build, implement, and scale with confidence.
+            I am a <strong>Technical Account Manager at Geotab</strong> with a Bachelor of Computing
+            Science and a background in technical support, partner enablement, APIs, integrations,
+            data analysis, automation, and platform troubleshooting. I work where customer needs,
+            product behaviour, and engineering details meet - translating complex findings into clear,
+            actionable next steps.
           </p>
 
           <p>
-            I bring expertise in <strong>root cause analysis, SQL and BigQuery investigations,
+            My experience includes <strong>root cause analysis, SQL and BigQuery investigations,
             Salesforce and Jira workflows, SDK and API support, documentation, technical deep dives,
-            and automation scripting</strong>. Across my experience, I have worked on partner support,
-            case operations, internal tools, website development, UI/UX, WordPress, PHP/MySQL, and
-            programming education, giving me a broad view of both <strong>product-facing technical work</strong>
-            and <strong>user-centered delivery</strong>.
+            and automation scripting</strong>. I enjoy making systems and support experiences better:
+            whether that means collaborating with engineering teams, mentoring others, or building
+            practical tools that help teams respond with more confidence.
           </p>
 
           <div class="hero-card">
@@ -902,12 +1102,11 @@
 
             <ul>
               <li><strong>Current role:</strong> Technical Account Manager at Geotab</li>
+              <li><strong>Impact:</strong> Supporting enterprise accounts while maintaining a 9.0 average CSAT score and 1.8-day average case resolution time</li>
               <li><strong>Recent technical focus:</strong> API integrations, SDK support, SQL/BigQuery analysis, automation, Salesforce, Jira, documentation, and partner-facing technical strategy</li>
             </ul>
           </div>
         </div>
-
-        <img class="about-photo" src="assets/profile-picture-updated.png" alt="Ragini portrait">
       </div>
     </div>
   </section>
